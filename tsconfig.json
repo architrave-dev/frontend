@@ -21,7 +21,8 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@styles/*": ["src/app/styles/*"]
+      "@styles/*": ["src/app/styles/*"],
+      "@routes/*": ["src/app/routes/*"]
     }
   },
   "include": ["src"],

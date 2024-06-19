@@ -28,6 +28,15 @@ const GlobalStyle = createGlobalStyle`
     overflow-wrap: break-word;
   }
 
+  ul, li {
+    list-style: none;
+  }
+
+  a {
+    all: unset;
+    cursor: pointer;
+  }
+
   #root, #__next {
     isolation: isolate;
   }
