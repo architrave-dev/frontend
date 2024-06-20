@@ -2,7 +2,7 @@ import { media } from "@styles/mediaQuery";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export default function Header() {
+export default function GlobalNavigation() {
   // TODO: 차후 편집 기능으로 수정 :== 글로벌 스테이트
   const mode = false;
   return (
@@ -37,9 +37,10 @@ export default function Header() {
   );
 }
 const StyledHeader = styled.header`
-  margin: auto;
-  padding-block: 1rem;
+  position: fixed;
+  width: 100%;
   padding-inline: 2rem;
+  background: transparent;
 `;
 
 const StyledMenu = styled.menu`

@@ -1,9 +1,15 @@
-import Header from "./widgets/header";
+import GlobalNavigation from "./widgets/GlobalNavigation";
+import Divider from "./shared/ui/Divider";
+import HeroSection from "./shared/ui/HeroSection";
+import { BaseButton } from "./shared/ui/Button";
 
 function App() {
   return (
     <>
-      <Header></Header>
+      <GlobalNavigation></GlobalNavigation>
+      <HeroSection />
+      <Divider />
+      <BaseButton>buttonTest</BaseButton>
       {/* <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
