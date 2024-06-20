@@ -1,3 +1,4 @@
+import { media } from "@styles/mediaQuery";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -42,20 +43,24 @@ const StyledHeader = styled.header`
 `;
 
 const StyledMenu = styled.menu`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: minmax(7rem, 20rem) repeat(4, minmax(4rem, 9rem)) 1fr;
+  column-gap: 2rem;
   align-items: center;
+  ${media.tablet} {
+    grid-template-columns: 12rem repeat(4, 5rem) 1fr;
+    column-gap: 1rem;
+  }
 `;
 
 const StyledList = styled.li`
-  font-size: ${(props) => props.theme.fontSize.gnbTab};
+  font-size: ${(props) => props.theme.fontSize.md};
   font-weight: ${(props) => props.theme.fontWeight.medium};
-  &:not(:first-child) {
-    padding-inline-start: 1rem;
-  }
   &:last-child {
-    flex-grow: 1;
-    text-align: end;
+    justify-self: end;
+  }
+  ${media.tablet} {
+    font-size: ${(props) => props.theme.fontSize.xsm};
   }
 `;
 
@@ -65,4 +70,7 @@ const StyledLink = styled(Link)`
 
 const StyledLogo = styled(StyledLink)`
   font-size: ${(props) => props.theme.fontSize.lg};
+  ${media.tablet} {
+    font-size: ${(props) => props.theme.fontSize.md};
+  }
 `;

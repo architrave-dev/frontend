@@ -7,10 +7,11 @@ const colors = {
   white: "#ffffff",
 };
 const fontSize = {
-  sm: "20px",
-  md: "24px",
-  lg: "40px",
-  xlg: "72px",
+  xsm: "1.6rem",
+  sm: "2rem",
+  md: "2.4rem",
+  lg: "4rem",
+  xlg: "7.2rem",
 };
 const fontWeight = {
   thin: 100,
@@ -37,6 +38,5 @@ const theme = {
   colors,
   fontSize,
   fontWeight,
-  // typography,
 };
 export { theme };
