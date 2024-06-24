@@ -30,7 +30,7 @@ export default function GlobalNavigation() {
             {mode ? (
               <div>editMode</div>
             ) : (
-              <StyledLink to="contact">login</StyledLink>
+              <StyledLink to="login">login</StyledLink>
             )}
           </StyledList>
         </StyledMenu>

@@ -1,10 +1,7 @@
-import { styled } from "styled-components";
+import { css } from "styled-components";
 
-export default function Divider() {
-  return <StyledDivider />;
-}
-
-const StyledDivider = styled.div`
-  padding-block: 1rem;
+const DividerCSS = css`
   border-bottom: 1px solid black;
 `;
+
+export { DividerCSS };

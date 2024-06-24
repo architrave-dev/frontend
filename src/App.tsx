@@ -1,13 +1,13 @@
 import GlobalNavigation from "./widgets/GlobalNavigation";
-import Divider from "./shared/ui/Divider";
 import HeroSection from "./shared/ui/HeroSection";
+import ProjectDescription from "./entities/project/ui/ProjectDescription";
 
 function App() {
   return (
     <>
       <GlobalNavigation></GlobalNavigation>
       <HeroSection />
-      <Divider />
+      <ProjectDescription />
     </>
   );
 }

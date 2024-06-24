@@ -1,9 +1,24 @@
 import { css } from "styled-components";
 
-const Container = css<{ $wide?: boolean }>`
+interface ContainerProps {
+  $wide: boolean;
+}
+
+const Container = css<ContainerProps>`
   margin-inline: auto;
   width: ${(props) =>
     props.$wide ? "calc(100% - 12rem)" : "calc(100% - 20rem)"};
 `;
 
-export { Container };
+interface MarginProps {
+  $tall: boolean;
+}
+
+const Margin = css<MarginProps>`
+  margin-block-end: ${(props) => (props.$tall ? "16rem" : "6rem")};
+`;
+
+export const LayoutCSS = {
+  Container,
+  Margin,
+};

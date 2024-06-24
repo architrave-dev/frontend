@@ -32,11 +32,11 @@ const body = css`
 `;
 
 export const TypoCSS = {
-  mainTitleCSS: mainTitle,
-  projectTitleCSS: projectTitle,
-  buttonCSS: button,
-  gnbTapCSS: gnbTap,
-  listCSS: list,
-  captionCSS: caption,
-  bodyCSS: body,
+  mainTitle,
+  projectTitle,
+  button,
+  gnbTap,
+  list,
+  caption,
+  body,
 };
