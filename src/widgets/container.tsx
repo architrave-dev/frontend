@@ -1,8 +1,9 @@
-import styled from "styled-components";
+import { css } from "styled-components";
 
-const Container = styled.div`
+const Container = css<{ $wide?: boolean }>`
   margin-inline: auto;
-  padding-inline: 2rem;
+  width: ${(props) =>
+    props.$wide ? "calc(100% - 12rem)" : "calc(100% - 20rem)"};
 `;
 
 export { Container };
