@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import sampleImage from "../../assets/sampleImage.png";
-import { media } from "@styles/mediaQuery";
 
 export default function HeroSection() {
   return (
@@ -28,14 +27,11 @@ const StackedSection = styled.section`
 `;
 
 const StackedHeader = styled.header`
-  margin-inline: 12rem;
-  margin-block-end: 15vh;
+  margin-inline-start: 12rem;
+  margin-block-start: 75vh;
   color: ${(props) => props.theme.colors.white};
   justify-self: start;
-  align-self: end;
-  /* ${media.tablet} {
-    align-self: center;
-  } */
+  align-self: start;
 `;
 
 const StackedMainTitle = styled.h1`
