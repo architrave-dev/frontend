@@ -12,18 +12,20 @@ export default function GlobalNavigation() {
           <StyledList>
             <StyledLogo to="/">Architrave</StyledLogo>
           </StyledList>
-          <StyledList>
-            <StyledLink to="projects">Projects</StyledLink>
-          </StyledList>
-          <StyledList>
-            <StyledLink to="works">Works</StyledLink>
-          </StyledList>
-          <StyledList>
-            <StyledLink to="about">About</StyledLink>
-          </StyledList>
-          <StyledList>
-            <StyledLink to="contact">Contact</StyledLink>
-          </StyledList>
+          <StyledFlex>
+            <StyledList>
+              <StyledLink to="projects">Projects</StyledLink>
+            </StyledList>
+            <StyledList>
+              <StyledLink to="works">Works</StyledLink>
+            </StyledList>
+            <StyledList>
+              <StyledLink to="about">About</StyledLink>
+            </StyledList>
+            <StyledList>
+              <StyledLink to="contact">Contact</StyledLink>
+            </StyledList>
+          </StyledFlex>
           <StyledList>
             {mode ? (
               <div>editMode</div>
@@ -39,19 +41,20 @@ export default function GlobalNavigation() {
 const StyledHeader = styled.header`
   position: fixed;
   width: 100%;
-  padding-inline: 2rem;
+  padding-inline: 12rem;
   background: transparent;
+`;
+
+const StyledFlex = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  column-gap: 1.5rem;
 `;
 
 const StyledMenu = styled.menu`
   display: grid;
-  grid-template-columns: minmax(7rem, 20rem) repeat(4, minmax(4rem, 9rem)) 1fr;
-  column-gap: 2rem;
+  grid-template-columns: 20rem auto 1fr;
   align-items: center;
-  ${media.tablet} {
-    grid-template-columns: 12rem repeat(4, 5rem) 1fr;
-    column-gap: 1rem;
-  }
 `;
 
 const StyledList = styled.li`

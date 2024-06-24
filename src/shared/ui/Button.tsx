@@ -1,7 +1,7 @@
-import React, { HTMLAttributes } from "react";
+import React from "react";
 import styled from "styled-components";
 
-interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
 

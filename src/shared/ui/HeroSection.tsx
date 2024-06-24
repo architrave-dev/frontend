@@ -5,20 +5,19 @@ import { media } from "@styles/mediaQuery";
 export default function HeroSection() {
   return (
     <StackedSection aria-label="callToAction">
+      <StackedImage src={sampleImage} alt="sampleImage" />
       <StackedHeader>
         <StackedMainTitle>HeroSection</StackedMainTitle>
         <StackedParagraph>
           Sub Text Sub Text Sub Text Sub Text Sub Text Sub Text
         </StackedParagraph>
       </StackedHeader>
-      <StackedImage src={sampleImage} alt="sampleImage" />
     </StackedSection>
   );
 }
 
 const StackedSection = styled.section`
   display: grid;
-  position: relative;
   height: 100vh;
   height: 100dvh;
   height: 100svh;
@@ -29,14 +28,14 @@ const StackedSection = styled.section`
 `;
 
 const StackedHeader = styled.header`
+  margin-inline: 12rem;
+  margin-block-end: 15vh;
   color: ${(props) => props.theme.colors.white};
   justify-self: start;
   align-self: end;
-  padding-inline-start: 2rem;
-  padding-block-end: 6rem;
-  ${media.tablet} {
+  /* ${media.tablet} {
     align-self: center;
-  }
+  } */
 `;
 
 const StackedMainTitle = styled.h1`

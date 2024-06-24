@@ -1,7 +1,6 @@
 import GlobalNavigation from "./widgets/GlobalNavigation";
 import Divider from "./shared/ui/Divider";
 import HeroSection from "./shared/ui/HeroSection";
-import { BaseButton } from "./shared/ui/Button";
 
 function App() {
   return (
@@ -9,7 +8,6 @@ function App() {
       <GlobalNavigation></GlobalNavigation>
       <HeroSection />
       <Divider />
-      <BaseButton>buttonTest</BaseButton>
     </>
   );
 }
