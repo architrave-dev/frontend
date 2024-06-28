@@ -28,7 +28,7 @@ export default function GlobalNavigation() {
           </StyledFlex>
           <StyledList>
             {mode ? (
-              <div>editMode</div>
+              <button onClick={() => {}}>editMode</button>
             ) : (
               <StyledLink to="login">login</StyledLink>
             )}
