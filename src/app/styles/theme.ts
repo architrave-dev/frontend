@@ -24,16 +24,6 @@ const fontWeight = {
   extraBold: 800,
   black: 900,
 };
-// const typography = {
-//   mainTitle: `font-size: ${fontSize.xlg}; font-weight: ${fontWeight.semiBold}`,
-//   projectTitle: `font-size: ${fontSize.lg}; font-weight: ${fontWeight.bold}`,
-//   button: `font-size: ${fontSize.md}; font-weight: ${fontWeight.medium}`,
-//   gnbTap: `font-size: ${fontSize.md}; font-weight: ${fontWeight.medium}`,
-//   selectedButton: `font-size: ${fontSize.md}; font-weight: ${fontWeight.medium}; text-decoration: underline`,
-//   list: `font-size: ${fontSize.sm}; font-weight: ${fontWeight.medium}`,
-//   caption: `font-size: ${fontSize.sm}; font-weight: ${fontWeight.normal}`,
-//   body: `font-size: ${fontSize.sm}; font-weight: ${fontWeight.normal}`,
-// };
 const theme = {
   colors,
   fontSize,

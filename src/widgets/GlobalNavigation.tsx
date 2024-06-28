@@ -70,11 +70,22 @@ const StyledList = styled.li`
 
 const StyledLink = styled(Link)`
   display: block;
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: underline;
+  }
 `;
 
 const StyledLogo = styled(StyledLink)`
   font-size: ${(props) => props.theme.fontSize.lg};
   ${media.tablet} {
     font-size: ${(props) => props.theme.fontSize.md};
+  }
+  text-decoration: none;
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
   }
 `;

@@ -32,8 +32,8 @@ const StyledProjectTitle = styled.h1`
 const FlexList = styled.li`
   display: grid;
   grid-template-columns: 23rem 1fr;
-  font-size: 2rem;
-  font-weight: 500;
+  font-size: ${(props) => props.theme.fontSize.sm};
+  font-weight: ${(props) => props.theme.fontWeight.medium};
   column-gap: 1rem;
   margin-block-end: 1rem;
 `;

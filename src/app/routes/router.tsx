@@ -26,6 +26,10 @@ const router = createBrowserRouter([
     path: "contact",
     element: <div></div>,
   },
+  {
+    path: "login",
+    element: <div></div>,
+  },
 ]);
 
 export { router };

@@ -4,7 +4,7 @@ import sampleImage from "../../assets/sampleImage.png";
 export default function HeroSection() {
   return (
     <StackedSection aria-label="callToAction">
-      <StackedImage src={sampleImage} alt="sampleImage" />
+      <StackedImage src={sampleImage} alt="sampleImage" fetchPriority="high" />
       <StackedHeader>
         <StackedMainTitle>HeroSection</StackedMainTitle>
         <StackedParagraph>
@@ -47,4 +47,5 @@ const StackedImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  overflow-x: hidden;
 `;
