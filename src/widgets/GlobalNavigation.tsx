@@ -2,7 +2,13 @@ import { media } from "@styles/mediaQuery";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export default function GlobalNavigation() {
+interface GlobalNavigationProps extends React.HTMLAttributes<HTMLDivElement> {
+  artistName?: string;
+}
+
+export default function GlobalNavigation({
+  artistName,
+}: GlobalNavigationProps) {
   // TODO: 차후 편집 기능으로 수정 :== 글로벌 스테이트
   const mode = false;
   return (
@@ -27,11 +33,8 @@ export default function GlobalNavigation() {
             </StyledList>
           </StyledFlex>
           <StyledList>
-            {mode ? (
-              <button onClick={() => {}}>editMode</button>
-            ) : (
-              <StyledLink to="login">login</StyledLink>
-            )}
+            {mode && <button onClick={() => {}}>편집</button>}
+            <StyledLink to="login">{artistName ?? "john"}</StyledLink>
           </StyledList>
         </StyledMenu>
       </nav>
@@ -60,6 +63,7 @@ const StyledMenu = styled.menu`
 const StyledList = styled.li`
   font-size: ${(props) => props.theme.fontSize.md};
   font-weight: ${(props) => props.theme.fontWeight.medium};
+  color: ${(props) => props.theme.colors.white};
   &:last-child {
     justify-self: end;
   }

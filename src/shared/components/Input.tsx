@@ -18,7 +18,6 @@ export default function Input({ label }: InputProps) {
 
 const StyledInput = styled.input`
   all: unset;
-
   font-size: ${(props) => props.theme.fontSize.lg};
   margin-block-start: 10rem;
   background-color: pink;

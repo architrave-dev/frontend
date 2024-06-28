@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import sampleImage from "../../assets/sampleImage.png";
-import { Container } from "@styles/Layouts";
+import sampleImage from "../../assets/summer.jpg";
+import { Container, MarginBottom } from "@styles/Layouts";
 
 export default function HeroSection() {
   return (
@@ -18,6 +18,7 @@ export default function HeroSection() {
 
 const StackedSection = styled.section`
   ${Container}
+  ${MarginBottom}
   display: grid;
   height: 100vh;
   height: 100dvh;
