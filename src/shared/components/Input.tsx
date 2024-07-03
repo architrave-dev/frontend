@@ -1,26 +1,18 @@
-import React from "react";
 import styled from "styled-components";
 
-interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
-  label?: "string";
+interface InputInterface {
+  variant?: "ghost";
+  size?: "main" | "sub";
 }
 
-export default function Input({ label }: InputProps) {
-  return (
-    <>
-      <label>
-        {label ? <span>{label}</span> : null}
-        <StyledInput placeholder="텍스트를 입력해주세요" />
-      </label>
-    </>
-  );
-}
-
-const StyledInput = styled.input`
+const StyledInput = styled.input<InputInterface>`
   all: unset;
-  font-size: ${(props) => props.theme.fontSize.lg};
-  margin-block-start: 10rem;
-  background-color: pink;
-  padding-block-end: 2rem;
-  border-bottom: 1px solid black;
+  display: block;
+  background-color: limegreen;
+  padding: 0.5rem;
+  font-size: ${(props) =>
+    props.size === "main" ? props.theme.fontSize.xlg : props.theme.fontSize.lg};
+  color: ${(props) => props.theme.colors.white};
 `;
+
+export { StyledInput };

@@ -1,16 +1,32 @@
 import styled from "styled-components";
 import sampleImage from "../../assets/summer.jpg";
 import { Container, MarginBottom } from "@styles/Layouts";
+import { StyledInput } from "../components/Input";
 
 export default function HeroSection() {
+  const edit = false;
   return (
     <StackedSection aria-label="callToAction">
-      <StackedImage src={sampleImage} alt="sampleImage" fetchPriority="high" />
+      <StackedImage src={sampleImage} alt="sampleImage" />
       <StackedHeader>
-        <StackedMainTitle>HeroSection</StackedMainTitle>
-        <StackedParagraph>
-          Sub Text Sub Text Sub Text Sub Text Sub Text Sub Text
-        </StackedParagraph>
+        {edit ? (
+          <>
+            <StyledInput
+              size="sub"
+              placeholder="HeroSection"
+              aria-live="polite"
+              disabled={!edit}
+            />
+            <StyledInput size="sub" placeholder="텍스트를 입력해주세요" />
+          </>
+        ) : (
+          <>
+            <StackedMainTitle>HeroSection</StackedMainTitle>
+            <StackedParagraph>
+              Sub Text Sub Text Sub Text Sub Text Sub Text Sub Text
+            </StackedParagraph>
+          </>
+        )}
       </StackedHeader>
     </StackedSection>
   );
