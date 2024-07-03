@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -12,11 +11,10 @@ import styled from "styled-components";
 
 export default function CarouselSection() {
   return (
-    <section>
+    <section aria-label="project-carousel-view">
       <Swiper
         modules={[Autoplay]}
         centeredSlides
-        // spaceBetween={30}
         slidesPerView={1}
         autoplay={{ delay: 2500 }}
       >

@@ -1,6 +1,8 @@
 import { media } from "@styles/mediaQuery";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useEditStore } from "src/app/store";
+import useCurrentPath from "src/features/useCurrentPath";
 
 interface GlobalNavigationProps extends React.HTMLAttributes<HTMLDivElement> {
   artistName?: string;
@@ -9,32 +11,50 @@ interface GlobalNavigationProps extends React.HTMLAttributes<HTMLDivElement> {
 export default function GlobalNavigation({
   artistName,
 }: GlobalNavigationProps) {
-  // TODO: 차후 편집 기능으로 수정 :== 글로벌 스테이트
-  const mode = false;
+  const { isEditMode, toggleEditMode } = useEditStore((state) => state);
+  const pathMap = useCurrentPath({
+    "/projects": false,
+    "/works": false,
+    "/about": false,
+    "/contact": false,
+  });
+  console.log(pathMap);
   return (
     <StyledHeader>
       <nav>
         <StyledMenu>
           <StyledList>
-            <StyledLogo to="/">Architrave</StyledLogo>
+            <StyledLogo $isCurrentPath={false} to="/">
+              Architrave
+            </StyledLogo>
           </StyledList>
           <StyledFlex>
             <StyledList>
-              <StyledLink to="projects">Projects</StyledLink>
+              <StyledLink $isCurrentPath={pathMap["/projects"]} to="projects">
+                Projects
+              </StyledLink>
             </StyledList>
             <StyledList>
-              <StyledLink to="works">Works</StyledLink>
+              <StyledLink $isCurrentPath={pathMap["/works"]} to="works">
+                Works
+              </StyledLink>
             </StyledList>
             <StyledList>
-              <StyledLink to="about">About</StyledLink>
+              <StyledLink $isCurrentPath={pathMap["/about"]} to="about">
+                About
+              </StyledLink>
             </StyledList>
             <StyledList>
-              <StyledLink to="contact">Contact</StyledLink>
+              <StyledLink $isCurrentPath={pathMap["/contact"]} to="contact">
+                Contact
+              </StyledLink>
             </StyledList>
           </StyledFlex>
           <StyledList>
-            {mode && <button onClick={() => {}}>편집</button>}
-            <StyledLink to="login">{artistName ?? "john"}</StyledLink>
+            {isEditMode && <button onClick={toggleEditMode}>편집</button>}
+            <StyledLink $isCurrentPath={isEditMode} to="login">
+              {artistName ?? "john"}
+            </StyledLink>
           </StyledList>
         </StyledMenu>
       </nav>
@@ -43,9 +63,11 @@ export default function GlobalNavigation({
 }
 const StyledHeader = styled.header`
   position: fixed;
+  z-index: 500;
+  background: limegreen;
   width: 100%;
   padding-inline: 12rem;
-  background: transparent;
+  /* background: transparent; */
 `;
 
 const StyledFlex = styled.div`
@@ -72,13 +94,14 @@ const StyledList = styled.li`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(Link)<{ $isCurrentPath: boolean }>`
   display: block;
   &:hover,
   &:focus,
   &:active {
     text-decoration: underline;
   }
+  text-decoration: ${(props) => (props.$isCurrentPath ? "underline" : "none")};
 `;
 
 const StyledLogo = styled(StyledLink)`
