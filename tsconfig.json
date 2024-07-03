@@ -22,7 +22,12 @@
     "baseUrl": ".",
     "paths": {
       "@styles/*": ["src/app/styles/*"],
-      "@routes/*": ["src/app/routes/*"]
+      "@routes/*": ["src/app/routes/*"],
+      "@shared/*": ["src/shared/*"],
+      "@features/*": ["src/features/*"],
+      "@entities/*": ["src/entities/*"],
+      "@pages/*": ["src/pages/*"],
+      "@widgets/*": ["src/widgets/*"]
     }
   },
   "include": ["src"],
