@@ -1,6 +1,6 @@
 import { media } from "@styles/mediaQuery";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useEditStore } from "src/app/store";
 import useCurrentPath from "src/features/useCurrentPath";
 
@@ -24,35 +24,55 @@ export default function GlobalNavigation({
       <nav>
         <StyledMenu>
           <StyledList>
-            <StyledLogo $isCurrentPath={false} to="/">
+            <StyledLogo $isCurrentPath={false} $disabled={false} to="/">
               Architrave
             </StyledLogo>
           </StyledList>
           <StyledFlex>
             <StyledList>
-              <StyledLink $isCurrentPath={pathMap["/projects"]} to="projects">
+              <StyledLink
+                $isCurrentPath={pathMap["/projects"]}
+                $disabled={isEditMode}
+                to="projects"
+              >
                 Projects
               </StyledLink>
             </StyledList>
             <StyledList>
-              <StyledLink $isCurrentPath={pathMap["/works"]} to="works">
+              <StyledLink
+                $isCurrentPath={pathMap["/works"]}
+                $disabled={isEditMode}
+                to="works"
+              >
                 Works
               </StyledLink>
             </StyledList>
             <StyledList>
-              <StyledLink $isCurrentPath={pathMap["/about"]} to="about">
+              <StyledLink
+                $isCurrentPath={pathMap["/about"]}
+                $disabled={isEditMode}
+                to="about"
+              >
                 About
               </StyledLink>
             </StyledList>
             <StyledList>
-              <StyledLink $isCurrentPath={pathMap["/contact"]} to="contact">
+              <StyledLink
+                $isCurrentPath={pathMap["/contact"]}
+                $disabled={isEditMode}
+                to="contact"
+              >
                 Contact
               </StyledLink>
             </StyledList>
           </StyledFlex>
           <StyledList>
             {isEditMode && <button onClick={toggleEditMode}>편집</button>}
-            <StyledLink $isCurrentPath={isEditMode} to="login">
+            <StyledLink
+              $isCurrentPath={isEditMode}
+              $disabled={false}
+              to="login"
+            >
               {artistName ?? "john"}
             </StyledLink>
           </StyledList>
@@ -94,8 +114,18 @@ const StyledList = styled.li`
   }
 `;
 
-const StyledLink = styled(Link)<{ $isCurrentPath: boolean }>`
+const StyledLink = styled(Link)<{
+  $isCurrentPath: boolean;
+  $disabled: boolean;
+}>`
   display: block;
+  ${(props) =>
+    props.$disabled
+      ? css`
+          color: ${(props) => props.theme.colors.placeholder};
+          pointer-events: none;
+        `
+      : null}
   &:hover,
   &:focus,
   &:active {
