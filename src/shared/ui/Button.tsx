@@ -1,23 +1,6 @@
-import React from "react";
-import styled from "styled-components";
+import { css } from "styled-components";
 
-interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
-}
-
-function BaseButton({ children }: ButtonProps) {
-  return <StyledBaseButton>{children}</StyledBaseButton>;
-}
-
-function WhiteButton({ children }: ButtonProps) {
-  return <StyledWhiteButton>{children}</StyledWhiteButton>;
-}
-
-function OutlineButton({ children }: ButtonProps) {
-  return <StyledOutlineButton>{children}</StyledOutlineButton>;
-}
-
-const StyledBaseButton = styled.button`
+const StyledBaseButtonLayout = css`
   font-size: ${(props) => props.theme.fontSize.md};
   color: ${(props) => props.theme.colors.white};
   padding-inline: 1.25rem;
@@ -27,7 +10,8 @@ const StyledBaseButton = styled.button`
   }
 `;
 
-const StyledWhiteButton = styled(StyledBaseButton)`
+const StyledWhiteButtonLayout = css`
+  ${StyledBaseButtonLayout}
   &:hover,
   &:focus,
   &:active {
@@ -35,8 +19,13 @@ const StyledWhiteButton = styled(StyledBaseButton)`
   }
 `;
 
-const StyledOutlineButton = styled(StyledBaseButton)`
+const StyledOutlineButtonLayout = css`
+  ${StyledBaseButtonLayout}
   border: 1px solid ${(props) => props.theme.colors.white};
 `;
 
-export { BaseButton, WhiteButton, OutlineButton };
+export {
+  StyledBaseButtonLayout,
+  StyledWhiteButtonLayout,
+  StyledOutlineButtonLayout,
+};

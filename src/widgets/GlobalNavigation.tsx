@@ -1,37 +1,80 @@
 import { media } from "@styles/mediaQuery";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { useEditStore } from "src/app/store";
+import useCurrentPath from "src/features/useCurrentPath";
 
-export default function GlobalNavigation() {
-  // TODO: 차후 편집 기능으로 수정 :== 글로벌 스테이트
-  const mode = false;
+interface GlobalNavigationProps extends React.HTMLAttributes<HTMLDivElement> {
+  artistName?: string;
+}
+
+export default function GlobalNavigation({
+  artistName,
+}: GlobalNavigationProps) {
+  const { isEditMode, toggleEditMode } = useEditStore((state) => state);
+  const pathMap = useCurrentPath({
+    "/projects": false,
+    "/works": false,
+    "/about": false,
+    "/contact": false,
+  });
+  console.log(pathMap);
   return (
     <StyledHeader>
       <nav>
         <StyledMenu>
           <StyledList>
-            <StyledLogo to="/">Architrave</StyledLogo>
+            <StyledLogo $isCurrentPath={false} $disabled={false} to="/">
+              Architrave
+            </StyledLogo>
           </StyledList>
           <StyledFlex>
             <StyledList>
-              <StyledLink to="projects">Projects</StyledLink>
+              <StyledLink
+                $isCurrentPath={pathMap["/projects"]}
+                $disabled={isEditMode}
+                to="projects"
+              >
+                Projects
+              </StyledLink>
             </StyledList>
             <StyledList>
-              <StyledLink to="works">Works</StyledLink>
+              <StyledLink
+                $isCurrentPath={pathMap["/works"]}
+                $disabled={isEditMode}
+                to="works"
+              >
+                Works
+              </StyledLink>
             </StyledList>
             <StyledList>
-              <StyledLink to="about">About</StyledLink>
+              <StyledLink
+                $isCurrentPath={pathMap["/about"]}
+                $disabled={isEditMode}
+                to="about"
+              >
+                About
+              </StyledLink>
             </StyledList>
             <StyledList>
-              <StyledLink to="contact">Contact</StyledLink>
+              <StyledLink
+                $isCurrentPath={pathMap["/contact"]}
+                $disabled={isEditMode}
+                to="contact"
+              >
+                Contact
+              </StyledLink>
             </StyledList>
           </StyledFlex>
           <StyledList>
-            {mode ? (
-              <div>editMode</div>
-            ) : (
-              <StyledLink to="login">login</StyledLink>
-            )}
+            {isEditMode && <button onClick={toggleEditMode}>편집</button>}
+            <StyledLink
+              $isCurrentPath={isEditMode}
+              $disabled={false}
+              to="login"
+            >
+              {artistName ?? "john"}
+            </StyledLink>
           </StyledList>
         </StyledMenu>
       </nav>
@@ -40,9 +83,11 @@ export default function GlobalNavigation() {
 }
 const StyledHeader = styled.header`
   position: fixed;
+  z-index: 500;
+  background: limegreen;
   width: 100%;
   padding-inline: 12rem;
-  background: transparent;
+  /* background: transparent; */
 `;
 
 const StyledFlex = styled.div`
@@ -60,6 +105,7 @@ const StyledMenu = styled.menu`
 const StyledList = styled.li`
   font-size: ${(props) => props.theme.fontSize.md};
   font-weight: ${(props) => props.theme.fontWeight.medium};
+  color: ${(props) => props.theme.colors.white};
   &:last-child {
     justify-self: end;
   }
@@ -68,13 +114,24 @@ const StyledList = styled.li`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(Link)<{
+  $isCurrentPath: boolean;
+  $disabled: boolean;
+}>`
   display: block;
+  ${(props) =>
+    props.$disabled
+      ? css`
+          color: ${(props) => props.theme.colors.placeholder};
+          pointer-events: none;
+        `
+      : null}
   &:hover,
   &:focus,
   &:active {
     text-decoration: underline;
   }
+  text-decoration: ${(props) => (props.$isCurrentPath ? "underline" : "none")};
 `;
 
 const StyledLogo = styled(StyledLink)`
