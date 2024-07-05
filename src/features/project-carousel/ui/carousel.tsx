@@ -1,6 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ImageStack } from "@shared/ui/ImageStack";
-import BackgroundImage from "@features/Image/ui/BackgroundImage";
 
 interface ProjectInfo {
   id: number;
@@ -15,11 +14,11 @@ export interface CarouselProps {
 export default function Carousel({ project }: CarouselProps) {
   return (
     <Swiper>
-      {project.map(({ id, projectTitle, src }) => {
+      {project.map(({ id, projectTitle }) => {
         return (
           <SwiperSlide key={id}>
             <ImageStack>
-              <BackgroundImage src={src} />
+              {/* <BackgroundImage src={src} /> */}
               <ImageStack.Header>
                 <ImageStack.MainTitle>{projectTitle}</ImageStack.MainTitle>
               </ImageStack.Header>
