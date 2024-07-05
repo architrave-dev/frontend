@@ -1,8 +1,8 @@
 import { media } from "@styles/mediaQuery";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { useEditStore } from "src/app/store";
-import useCurrentPath from "src/features/useCurrentPath";
+import useCurrentPath from "../shared/hooks/useCurrentPath";
 
 interface GlobalNavigationProps extends React.HTMLAttributes<HTMLDivElement> {
   artistName?: string;
@@ -18,67 +18,71 @@ export default function GlobalNavigation({
     "/about": false,
     "/contact": false,
   });
-  console.log(pathMap);
   return (
-    <StyledHeader>
-      <nav>
-        <StyledMenu>
-          <StyledList>
-            <StyledLogo $isCurrentPath={false} $disabled={false} to="/">
-              Architrave
-            </StyledLogo>
-          </StyledList>
-          <StyledFlex>
+    <>
+      <StyledHeader>
+        <nav>
+          <StyledMenu>
             <StyledList>
+              <StyledLogo $isCurrentPath={false} $disabled={false} to="/">
+                Architrave
+              </StyledLogo>
+            </StyledList>
+            <StyledFlex>
+              <StyledList>
+                <StyledLink
+                  $isCurrentPath={pathMap["/projects"]}
+                  $disabled={isEditMode}
+                  to="projects"
+                >
+                  Projects
+                </StyledLink>
+              </StyledList>
+              <StyledList>
+                <StyledLink
+                  $isCurrentPath={pathMap["/works"]}
+                  $disabled={isEditMode}
+                  to="works"
+                >
+                  Works
+                </StyledLink>
+              </StyledList>
+              <StyledList>
+                <StyledLink
+                  $isCurrentPath={pathMap["/about"]}
+                  $disabled={isEditMode}
+                  to="about"
+                >
+                  About
+                </StyledLink>
+              </StyledList>
+              <StyledList>
+                <StyledLink
+                  $isCurrentPath={pathMap["/contact"]}
+                  $disabled={isEditMode}
+                  to="contact"
+                >
+                  Contact
+                </StyledLink>
+              </StyledList>
+            </StyledFlex>
+            <StyledList>
+              {isEditMode && <button onClick={toggleEditMode}>편집</button>}
               <StyledLink
-                $isCurrentPath={pathMap["/projects"]}
-                $disabled={isEditMode}
-                to="projects"
+                $isCurrentPath={isEditMode}
+                $disabled={false}
+                to="login"
               >
-                Projects
+                {artistName ?? "john"}
               </StyledLink>
             </StyledList>
-            <StyledList>
-              <StyledLink
-                $isCurrentPath={pathMap["/works"]}
-                $disabled={isEditMode}
-                to="works"
-              >
-                Works
-              </StyledLink>
-            </StyledList>
-            <StyledList>
-              <StyledLink
-                $isCurrentPath={pathMap["/about"]}
-                $disabled={isEditMode}
-                to="about"
-              >
-                About
-              </StyledLink>
-            </StyledList>
-            <StyledList>
-              <StyledLink
-                $isCurrentPath={pathMap["/contact"]}
-                $disabled={isEditMode}
-                to="contact"
-              >
-                Contact
-              </StyledLink>
-            </StyledList>
-          </StyledFlex>
-          <StyledList>
-            {isEditMode && <button onClick={toggleEditMode}>편집</button>}
-            <StyledLink
-              $isCurrentPath={isEditMode}
-              $disabled={false}
-              to="login"
-            >
-              {artistName ?? "john"}
-            </StyledLink>
-          </StyledList>
-        </StyledMenu>
-      </nav>
-    </StyledHeader>
+          </StyledMenu>
+        </nav>
+      </StyledHeader>
+      <main>
+        <Outlet />
+      </main>
+    </>
   );
 }
 const StyledHeader = styled.header`
