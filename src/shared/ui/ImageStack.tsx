@@ -15,7 +15,7 @@ function Header({ children }: ImageSectionProps) {
 }
 
 function MainTitle({ children }: ImageSectionProps) {
-  return <StyledMainTitle>{children}</StyledMainTitle>;
+  return <StyledMainTitle aria-live="polite">{children}</StyledMainTitle>;
 }
 
 function Paragraph({ children }: ImageSectionProps) {

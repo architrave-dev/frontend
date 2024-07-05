@@ -7,14 +7,13 @@ export interface ImageChangeButtonProps
   extends React.HTMLAttributes<HTMLInputElement> {}
 
 export default function ImageChangeButton({
-  children,
   onChange,
   ...props
 }: ImageChangeButtonProps) {
   return (
     <StyledImageChangeButton>
       <StyledGhostButton htmlFor="imageChangeInput">
-        {children}
+        이미지 교체
       </StyledGhostButton>
       <StyledImageInput
         id="imageChangeInput"
