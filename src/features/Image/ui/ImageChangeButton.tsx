@@ -8,15 +8,27 @@ export interface ImageChangeButtonProps
 
 export default function ImageChangeButton({
   children,
+  onChange,
   ...props
 }: ImageChangeButtonProps) {
   return (
-    <div>
-      <StyledGhostButton htmlFor="fileInput">{children}</StyledGhostButton>
-      <StyledImageInput id="fileInput" type="file" {...props} />
-    </div>
+    <StyledImageChangeButton>
+      <StyledGhostButton htmlFor="imageChangeInput">
+        {children}
+      </StyledGhostButton>
+      <StyledImageInput
+        id="imageChangeInput"
+        type="file"
+        onChange={onChange}
+        {...props}
+      />
+    </StyledImageChangeButton>
   );
 }
+
+const StyledImageChangeButton = styled.div`
+  place-self: center;
+`;
 
 const StyledGhostButton = styled.label`
   ${StyledOutlineButtonLayout}
