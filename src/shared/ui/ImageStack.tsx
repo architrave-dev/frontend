@@ -10,24 +10,22 @@ function ImageSection({ children }: ImageSectionProps) {
   return <StackedSection>{children}</StackedSection>;
 }
 
-export interface ImageHeaderProps {
-  props: {
-    mainTitle: string;
-    paragraph: string;
-  };
+function Header({ children }: ImageSectionProps) {
+  return <StyledImageHeader>{children}</StyledImageHeader>;
 }
 
-function ImageHeader({ props }: ImageHeaderProps) {
-  return (
-    <StyledImageHeader>
-      <StyledMainTitle>{props.mainTitle}</StyledMainTitle>
-      <StyledParagraph>{props.paragraph}</StyledParagraph>
-    </StyledImageHeader>
-  );
+function MainTitle({ children }: ImageSectionProps) {
+  return <StyledMainTitle>{children}</StyledMainTitle>;
 }
 
-export const ImageStackSection = Object.assign(ImageSection, {
-  ImageHeader,
+function Paragraph({ children }: ImageSectionProps) {
+  return <StyledParagraph>{children}</StyledParagraph>;
+}
+
+export const ImageStack = Object.assign(ImageSection, {
+  Header,
+  MainTitle,
+  Paragraph,
 });
 
 const StackedSection = styled.section`
