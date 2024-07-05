@@ -2,23 +2,35 @@ import { TypoCSS } from "@styles/typoGuide";
 import { DividerCSS } from "src/shared/ui/Divider";
 import styled from "styled-components";
 
-export default function ProjectDescription() {
+export interface ProjectDescriptionProps {
+  description: string;
+  period: string;
+  location: string;
+  organization: string;
+}
+
+export default function ProjectDescription({
+  description,
+  location,
+  period,
+  organization,
+}: ProjectDescriptionProps) {
   return (
     <section>
-      <StyledProjectTitle>ProjectDescription</StyledProjectTitle>
+      <StyledProjectTitle>{description}</StyledProjectTitle>
       <StyledDivider />
       <ul>
         <FlexList>
           <b>전시 기간</b>
-          <p>2019.08.01</p>
+          <p>{period}</p>
         </FlexList>
         <FlexList>
           <b>전시 장소</b>
-          <p>서교 예술 실험센터</p>
+          <p>{location}</p>
         </FlexList>
         <FlexList>
           <b>후원</b>
-          <p>서울 문화재단</p>
+          <p>{organization}</p>
         </FlexList>
       </ul>
     </section>
