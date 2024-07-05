@@ -1,21 +1,22 @@
 import axios from "axios";
 
-const axiosInstance = axios.create({
-  baseURL: "",
+const axiosConfig = {
+  baseUrl: "",
   timeout: 1000,
+};
+
+const axiosInstance = axios.create({
+  ...axiosConfig,
 });
 
 const auth = axios.create({
-  baseURL: "",
-  timeout: 1000,
+  ...axiosConfig,
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("auth")}`,
+    Authorization: `Bearer ${localStorage.get("auth")}`,
   },
 });
 
-const api = {
+export const api = {
   axiosInstance,
   auth,
 };
-
-export { api };

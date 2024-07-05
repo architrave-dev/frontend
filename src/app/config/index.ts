@@ -1,1 +1,2 @@
-export { instance } from "./axiosInstance";
+export { api } from "./axiosInstance";
+export { useLocalStorage } from "./useLocalStorage";
