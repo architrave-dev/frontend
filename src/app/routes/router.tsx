@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import ArtistLanding from "src/pages/ArtistLanding";
-import Projects from "src/pages/Projects";
 import GlobalNavigation from "src/widgets/GlobalNavigation";
 
 const router = createBrowserRouter([
@@ -14,7 +13,7 @@ const router = createBrowserRouter([
       },
       {
         path: "projects",
-        element: <Projects />,
+        element: <div></div>,
       },
       {
         path: "works",
