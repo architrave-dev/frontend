@@ -7,16 +7,27 @@ export interface ImageChangeButtonProps
   extends React.HTMLAttributes<HTMLInputElement> {}
 
 export default function ImageChangeButton({
-  children,
+  onChange,
   ...props
 }: ImageChangeButtonProps) {
   return (
-    <div>
-      <StyledGhostButton htmlFor="fileInput">{children}</StyledGhostButton>
-      <StyledImageInput id="fileInput" type="file" {...props} />
-    </div>
+    <StyledImageChangeButton>
+      <StyledGhostButton htmlFor="imageChangeInput">
+        이미지 교체
+      </StyledGhostButton>
+      <StyledImageInput
+        id="imageChangeInput"
+        type="file"
+        onChange={onChange}
+        {...props}
+      />
+    </StyledImageChangeButton>
   );
 }
+
+const StyledImageChangeButton = styled.div`
+  place-self: center;
+`;
 
 const StyledGhostButton = styled.label`
   ${StyledOutlineButtonLayout}
