@@ -1,5 +1,12 @@
-import React from "react";
+import HeroSection from "src/widgets/HeroSection";
+import Carousel from "@features/project-carousel/ui/carousel";
 
 export default function ArtistLanding() {
-  return <div>ArtistLanding</div>;
+  const projects = [{ id: 1, projectTitle: "test", src: "string" }];
+  return (
+    <>
+      <HeroSection />
+      <Carousel project={projects} />
+    </>
+  );
 }
