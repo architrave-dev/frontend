@@ -1,3 +1,4 @@
+import Project from "@pages/Project";
 import { createBrowserRouter } from "react-router-dom";
 import ArtistLanding from "src/pages/ArtistLanding";
 import GlobalNavigation from "src/widgets/GlobalNavigation";
@@ -13,7 +14,7 @@ const router = createBrowserRouter([
       },
       {
         path: "projects",
-        element: <div></div>,
+        element: <Project />,
       },
       {
         path: "works",

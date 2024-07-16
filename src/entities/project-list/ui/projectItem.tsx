@@ -7,10 +7,7 @@ export interface ProjectItemProps {
   mainTitle: string;
 }
 
-export default function ProjectItem({
-  thumbnailImage,
-  mainTitle,
-}: ProjectItemProps) {
+function ProjectItem({ thumbnailImage, mainTitle }: ProjectItemProps) {
   return (
     <StyledProjectItem>
       <StyledMainTitle>{mainTitle}</StyledMainTitle>
@@ -18,6 +15,8 @@ export default function ProjectItem({
     </StyledProjectItem>
   );
 }
+
+export { ProjectItem };
 
 const StyledProjectItem = styled.div`
   ${MarginBottom}
