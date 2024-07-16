@@ -30,6 +30,7 @@ function HeroSection() {
             </>
           )}
         </ImageStack.Header>
+        <StyledButton>submit</StyledButton>
       </ImageStack>
     </StyledMarginBottom>
   );
@@ -43,4 +44,13 @@ const StyledMarginBottom = styled.div`
 
 const StyledMarginInput = styled(StyledInput)`
   margin-block-end: 1rem;
+`;
+
+const StyledButton = styled.button`
+  position: absolute;
+  margin-block-start: 75vh;
+  right: 0;
+  bottom: 0;
+  width: 100px;
+  height: 50px;
 `;

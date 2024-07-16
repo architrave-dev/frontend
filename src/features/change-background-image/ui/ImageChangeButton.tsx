@@ -18,6 +18,7 @@ export default function ImageChangeButton({
       <StyledImageInput
         id="imageChangeInput"
         type="file"
+        accept="image/*"
         onChange={onChange}
         {...props}
       />
