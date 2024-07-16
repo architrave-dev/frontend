@@ -67,7 +67,7 @@ export default function GlobalNavigation({
               </StyledList>
             </StyledFlex>
             <StyledList>
-              {isEditMode && <button onClick={toggleEditMode}>편집</button>}
+              {isEditMode && <button onClick={toggleEditMode}>완료</button>}
               <StyledLink
                 $isCurrentPath={isEditMode}
                 $disabled={false}
