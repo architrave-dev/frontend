@@ -86,7 +86,6 @@ export default function GlobalNavigation({
   );
 }
 const StyledHeader = styled.header`
-  display: none;
   position: fixed;
   z-index: 500;
   background: limegreen;
