@@ -1,8 +1,13 @@
+import React from "react";
 import styled from "styled-components";
 import summer from "../../assets/summer.jpg";
 
-function BackgroundImage() {
-  return <StyledBackgroundImage src={summer} alt="sampleImage" />;
+export interface BackGroundImageProps
+  extends React.ImgHTMLAttributes<HTMLImageElement> {}
+
+function BackgroundImage({ src }: BackGroundImageProps) {
+  console.log("viewed src", src);
+  return <StyledBackgroundImage src={src || summer} alt="sampleImage" />;
 }
 
 export { BackgroundImage };
