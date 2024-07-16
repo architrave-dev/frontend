@@ -31,6 +31,7 @@ export const ImageStack = Object.assign(ImageSection, {
 const StyledStackSection = styled.section`
   ${Container}
   display: grid;
+  position: relative;
   width: 100%;
   height: 100vh;
   height: 100dvh;

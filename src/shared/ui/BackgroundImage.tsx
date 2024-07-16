@@ -6,7 +6,6 @@ export interface BackGroundImageProps
   extends React.ImgHTMLAttributes<HTMLImageElement> {}
 
 function BackgroundImage({ src }: BackGroundImageProps) {
-  console.log("viewed src", src);
   return <StyledBackgroundImage src={src || summer} alt="sampleImage" />;
 }
 

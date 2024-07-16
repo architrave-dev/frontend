@@ -8,6 +8,6 @@ const ProjectSchema = z.object({
   thumbnailUrl: z.string(),
 });
 
-type TProjectSchema = z.infer<typeof ProjectSchema>;
+type TProject = z.infer<typeof ProjectSchema>;
 
-export { ProjectSchema, type TProjectSchema };
+export { ProjectSchema, type TProject };
