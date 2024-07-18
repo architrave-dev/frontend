@@ -1,4 +1,5 @@
 import Project from "@pages/Project";
+import ProjectCreate from "@pages/ProjectCreate";
 import { createBrowserRouter } from "react-router-dom";
 import ArtistLanding from "src/pages/ArtistLanding";
 import GlobalNavigation from "src/widgets/GlobalNavigation";
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <div></div>,
+      },
+      {
+        path: "temp",
+        element: <ProjectCreate />,
       },
     ],
   },
