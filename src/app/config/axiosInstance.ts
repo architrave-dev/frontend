@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosConfig = {
-  baseUrl: "",
+  baseUrl: import.meta.env.BACKEND_API,
   timeout: 1000,
 };
 
