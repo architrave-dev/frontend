@@ -3,6 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { useEditStore } from "src/app/store";
 import useCurrentPath from "../shared/hooks/useCurrentPath";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
 interface GlobalNavigationProps extends React.HTMLAttributes<HTMLDivElement> {
   artistName?: string;
@@ -21,7 +22,7 @@ export default function GlobalNavigation({
   return (
     <>
       <StyledHeader>
-        <nav>
+        <NavigationMenu.Root>
           <StyledMenu>
             <StyledList>
               <StyledLogo $isCurrentPath={false} $disabled={false} to="/">
@@ -77,7 +78,7 @@ export default function GlobalNavigation({
               </StyledLink>
             </StyledList>
           </StyledMenu>
-        </nav>
+        </NavigationMenu.Root>
       </StyledHeader>
       <main>
         <Outlet />
