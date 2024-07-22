@@ -1,9 +1,11 @@
+import React from "react";
 import { useForm } from "react-hook-form";
 import { redirect } from "react-router-dom";
 import { api } from "src/app/config";
 import styled from "styled-components";
 
 export default function Landing() {
+  const [error, setError] = React.useState(false);
   const { register, handleSubmit } = useForm();
   return (
     <StyledGrid>
@@ -14,6 +16,8 @@ export default function Landing() {
           const result = await api.axiosInstance.get(`/member?aui=${aui}`);
           if (result.status === 200) {
             redirect(`/artist-landing-box?aui=${aui}`);
+          } else {
+            setError(true);
           }
         })}
       >
@@ -26,6 +30,7 @@ export default function Landing() {
         </label>
         <button type="submit">검색</button>
       </StyledForm>
+      {error ? <ErrorMessage>등록된 작가가 없습니다.</ErrorMessage> : null}
     </StyledGrid>
   );
 }
@@ -47,4 +52,10 @@ const TempLogo = styled.div`
 const StyledForm = styled.form`
   display: flex;
   gap: 2rem;
+  margin-block-end: 1.5rem;
+`;
+
+const ErrorMessage = styled.span`
+  font-size: 1.2rem;
+  color: red;
 `;
