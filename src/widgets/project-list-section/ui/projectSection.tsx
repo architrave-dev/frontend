@@ -1,5 +1,5 @@
 import React from "react";
-import { ProjectItem } from "@entities/project-list";
+// import { ProjectItem } from "@entities/project-list";
 import Carousel from "@features/project-carousel/ui/carousel";
 import summer from "../../../assets/summer.jpg";
 import { MarginBottom } from "@styles/Layouts";
@@ -11,7 +11,7 @@ export default function ProjectSection() {
       <StyledDiv>
         <Carousel />
       </StyledDiv>
-      <StyledDiv>
+      {/* <StyledDiv>
         <ProjectItem thumbnailImage={summer} mainTitle="mainTitle" />
       </StyledDiv>
       <StyledDiv>
@@ -22,7 +22,7 @@ export default function ProjectSection() {
       </StyledDiv>
       <StyledDiv>
         <ProjectItem thumbnailImage={summer} mainTitle="mainTitle" />
-      </StyledDiv>
+      </StyledDiv> */}
     </>
   );
 }
