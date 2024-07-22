@@ -1,11 +1,10 @@
 import { router } from "@routes/router";
+import queryClient from "@shared/queryClient";
 import { GlobalStyle } from "@styles/globalStyle";
 import { theme } from "@styles/theme";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-
-const queryClient = new QueryClient();
 
 export default function AppProvider() {
   return (
