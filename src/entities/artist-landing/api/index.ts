@@ -1,0 +1,1 @@
+export { GetArtistLanding } from "./getArtistLanding";
