@@ -15,4 +15,4 @@ const UpdateArtistLanding = async (
   return;
 };
 
-export { UpdateArtistLanding };
+export default UpdateArtistLanding;

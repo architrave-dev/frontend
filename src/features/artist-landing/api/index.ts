@@ -1,0 +1,1 @@
+export { UpdateArtistLanding } from "./updateArtistLanding";
