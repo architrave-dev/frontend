@@ -1,3 +1,4 @@
+import LoginDialog from "@widgets/login-dialog/ui/loginDialog";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { redirect } from "react-router-dom";
@@ -8,32 +9,41 @@ export default function Landing() {
   const [error, setError] = React.useState(false);
   const { register, handleSubmit } = useForm();
   return (
-    <StyledGrid>
-      <TempLogo />
-      <StyledForm
-        onSubmit={handleSubmit(async (values) => {
-          const { aui } = values;
-          const result = await api.axiosInstance.get(`/member?aui=${aui}`);
-          if (result.status === 200) {
-            redirect(`/artist-landing-box?aui=${aui}`);
-          } else {
-            setError(true);
-          }
-        })}
-      >
-        <label>
-          <input
-            {...register("aui")}
-            type="text"
-            placeholder="작가 이름을 검색해주세요"
-          />
-        </label>
-        <button type="submit">검색</button>
-      </StyledForm>
-      {error ? <ErrorMessage>등록된 작가가 없습니다.</ErrorMessage> : null}
-    </StyledGrid>
+    <>
+      <StyledHeader>
+        <LoginDialog />
+      </StyledHeader>
+      <StyledGrid>
+        <TempLogo />
+        <StyledForm
+          onSubmit={handleSubmit(async (values) => {
+            const { aui } = values;
+            const result = await api.axiosInstance.get(`/member?aui=${aui}`);
+            if (result.status === 200) {
+              redirect(`/artist-landing-box?aui=${aui}`);
+            } else {
+              setError(true);
+            }
+          })}
+        >
+          <label>
+            <input
+              {...register("aui")}
+              type="text"
+              placeholder="작가 이름을 검색해주세요"
+            />
+          </label>
+          <button type="submit">검색</button>
+        </StyledForm>
+        {error ? <ErrorMessage>등록된 작가가 없습니다.</ErrorMessage> : null}
+      </StyledGrid>
+    </>
   );
 }
+const StyledHeader = styled.header`
+  display: flex;
+  justify-content: end;
+`;
 
 const StyledGrid = styled.div`
   display: flex;

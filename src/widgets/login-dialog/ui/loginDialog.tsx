@@ -1,5 +1,5 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { StyledWhiteButtonLayout } from "@shared/ui/Button";
+import { StyledOutlineButtonLayout } from "@shared/ui/Button";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
@@ -39,7 +39,7 @@ export default function LoginDialog() {
 }
 
 const StyledLoginButton = styled.button`
-  ${StyledWhiteButtonLayout}
+  ${StyledOutlineButtonLayout}
 `;
 
 const StyledOverlay = styled(Dialog.Overlay)`
