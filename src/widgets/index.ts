@@ -1,1 +1,1 @@
-export { HeroSection } from "./artist-landing-section";
+export { HeroSection } from "./artist-landing-box";

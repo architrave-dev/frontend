@@ -5,7 +5,7 @@ import { MarginBottom } from "@styles/Layouts";
 import { useEditStore } from "src/app/store";
 import { styled } from "styled-components";
 
-function HeroSection() {
+function ArtistLanding() {
   const isEditMode = useEditStore((state) => state.isEditMode);
   return (
     <StyledMarginBottom>
@@ -36,7 +36,7 @@ function HeroSection() {
   );
 }
 
-export { HeroSection };
+export { ArtistLanding };
 
 const StyledMarginBottom = styled.div`
   ${MarginBottom}
