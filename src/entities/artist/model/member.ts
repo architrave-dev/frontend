@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const UserSchema = z.object({
+const memberSchema = z.object({
   memberId: z.number(),
   email: z.string(),
   username: z.string(),
@@ -9,6 +9,6 @@ const UserSchema = z.object({
   role: z.enum(["any"]),
 });
 
-type TUser = z.infer<typeof UserSchema>;
+type TMember = z.infer<typeof memberSchema>;
 
-export { type TUser, UserSchema };
+export { type TMember, memberSchema };
