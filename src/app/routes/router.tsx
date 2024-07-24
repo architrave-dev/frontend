@@ -1,8 +1,9 @@
+import Landing from "@pages/Landing";
 import Project from "@pages/Project";
 import ProjectCreate from "@pages/ProjectCreate";
 import { createBrowserRouter } from "react-router-dom";
 import ArtistLanding from "src/pages/ArtistLanding";
-// import GlobalNavigation from "src/widgets/GlobalNavigation";
+import GlobalNavigation from "src/widgets/GlobalNavigation";
 //
 // const tempRoot = {
 //   path: "/",
@@ -13,7 +14,11 @@ import ArtistLanding from "src/pages/ArtistLanding";
 const router = createBrowserRouter([
   {
     path: "/",
-    // element: <GlobalNavigation />,
+    element: <Landing />,
+  },
+  {
+    path: "/projects",
+    element: <GlobalNavigation />,
     children: [
       {
         index: true,
@@ -24,13 +29,12 @@ const router = createBrowserRouter([
         element: <Project />,
       },
       {
-        path: "projects/:projectId",
-        element: <div>projectId page</div>,
-      },
-      {
-        index: true,
         path: "projects/new",
         element: <div>new page</div>,
+      },
+      {
+        path: "projects/:projectId",
+        element: <div>projectId page</div>,
       },
       {
         path: "works",
