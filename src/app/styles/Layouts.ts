@@ -3,7 +3,8 @@ import { css } from "styled-components";
 
 const Container = css`
   margin-inline: auto;
-  width: 1520px;
+  padding-inline: 2rem;
+  max-width: 1520px;
 `;
 
 const TextArea = css`

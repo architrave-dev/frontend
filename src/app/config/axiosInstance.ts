@@ -12,7 +12,7 @@ const axiosInstance = axios.create({
 const auth = axios.create({
   ...axiosConfig,
   headers: {
-    Authorization: `Bearer ${localStorage.get("auth")}`,
+    // Authorization: `Bearer ${localStorage.get("auth")}`,
   },
 });
 

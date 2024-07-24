@@ -89,8 +89,8 @@ export default function GlobalNavigation({
 const StyledHeader = styled.header`
   position: fixed;
   z-index: 500;
-  background: limegreen;
   width: 100%;
+  height: 7rem;
   padding-inline: 12rem;
   /* background: transparent; */
 `;

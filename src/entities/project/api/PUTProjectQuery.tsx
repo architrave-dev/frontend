@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { api } from "src/app/config";
-import { TProject } from "./project";
+import { TProject } from "./projectType";
 
 // TODO: API 문서와 배포에 맞춰 업데이트하기
 export default function PutProjectsQuery({

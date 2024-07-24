@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "src/app/config";
-import { TProject } from "./project";
+import { TProject } from "./projectType";
 
-export default function GetProjectQuery({
+export default function useGetProjectQuery({
   aui,
   title,
 }: {

@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "src/app/config";
-import { TProject } from "./project";
+import { TProject } from "./projectType";
 
-export default function GetProjectsQuery({ aui }: { aui: string }) {
-  const projects = useQuery({
+export default function useGetProjectsQuery({ aui }: { aui: string }) {
+  const { data, isError, isSuccess } = useQuery({
     queryKey: ["projects", { aui }],
     queryFn: async () => {
       const result = await api.axiosInstance.get<TProject[]>(
@@ -12,7 +12,10 @@ export default function GetProjectsQuery({ aui }: { aui: string }) {
       return result;
     },
   });
+  if (isError) {
+    throw new Error("fetch failed");
+  }
   return {
-    projects,
+    project: isSuccess ? data.data : [],
   };
 }

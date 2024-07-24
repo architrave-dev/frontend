@@ -1,9 +1,9 @@
-import Carousel from "@features/project-carousel/ui/carousel";
+import Landing from "./Landing";
 
 export default function ArtistLanding() {
   return (
     <>
-      <Carousel />
+      <Landing />
     </>
   );
 }
