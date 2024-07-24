@@ -1,38 +1,29 @@
 import { TypoCSS } from "@styles/typoGuide";
 import { DividerCSS } from "src/shared/ui/Divider";
+import { ProjectEntity } from "../api";
 import styled from "styled-components";
 
-export interface ProjectDescriptionProps {
-  description: string;
-  period: string;
-  location: string;
-  organization: string;
-}
-
+// TODO : need projectDescriptionProps update
 export default function ProjectDescription({
+  projectInfoList,
   description,
-  location,
-  period,
-  organization,
-}: ProjectDescriptionProps) {
+}: ProjectEntity.TProject) {
   return (
     <section>
       <StyledProjectTitle>{description}</StyledProjectTitle>
       <StyledDivider />
-      <ul>
-        <FlexList>
-          <b>전시 기간</b>
-          <p>{period}</p>
-        </FlexList>
-        <FlexList>
-          <b>전시 장소</b>
-          <p>{location}</p>
-        </FlexList>
-        <FlexList>
-          <b>후원</b>
-          <p>{organization}</p>
-        </FlexList>
-      </ul>
+      {projectInfoList.length > 0 ? (
+        <ul>
+          {projectInfoList.map((info) => {
+            return (
+              <FlexList key={info.projectInfoId}>
+                <b>{info.customName}</b>
+                <p>{info.customValue}</p>
+              </FlexList>
+            );
+          })}
+        </ul>
+      ) : null}
     </section>
   );
 }

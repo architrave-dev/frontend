@@ -1,14 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "src/app/config";
-import { TProject } from "./projectType";
+import { TProject } from "../model/project.type";
 
-export default function useGetProjectQuery({
-  aui,
-  title,
-}: {
-  aui: string;
-  title: string;
-}) {
+function useGetProjectQuery({ aui, title }: { aui: string; title: string }) {
   const projects = useQuery({
     queryKey: ["projects", { aui, title }],
     queryFn: async () => {
@@ -22,3 +16,5 @@ export default function useGetProjectQuery({
     projects,
   };
 }
+
+export { useGetProjectQuery };

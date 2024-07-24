@@ -1,1 +1,1 @@
-export { GetArtistLanding } from "./getArtistLanding";
+export { useArtistLanding } from "./useArtistLanding";

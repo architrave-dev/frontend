@@ -1,17 +1,20 @@
-import ImageChangeButton from "@features/change-background-image/ui/ImageChangeButton";
 import { StyledInput } from "@shared/components/Input";
 import { BackgroundImage, ImageStack } from "@shared/ui";
 import { MarginBottom } from "@styles/Layouts";
 import { useEditStore } from "src/app/store";
 import { styled } from "styled-components";
 
-function ArtistLanding() {
+export interface ArtistLandingProps {
+  ImageChangeComponent: React.ReactNode;
+}
+
+function ArtistLanding({ ImageChangeComponent }: ArtistLandingProps) {
   const isEditMode = useEditStore((state) => state.isEditMode);
   return (
     <StyledMarginBottom>
       <ImageStack>
         <BackgroundImage />
-        {isEditMode ? <ImageChangeButton /> : null}
+        {isEditMode ? ImageChangeComponent : null}
         <ImageStack.Header>
           {isEditMode ? (
             <>

@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
 import { api } from "src/app/config";
-import { TProject } from "./projectType";
+import { TProject } from "../model/project.type";
 
 // TODO: API 문서와 배포에 맞춰 업데이트하기
-export default function PutProjectsQuery({
+function usePutProjectQuery({
   aui,
   projectId,
   body,
@@ -12,7 +12,7 @@ export default function PutProjectsQuery({
   projectId: string;
   body: TProject;
 }) {
-  const projects = useMutation<TProject>({
+  return useMutation<TProject>({
     mutationKey: ["projects", { aui, projectId }],
     mutationFn: async () => {
       const result = await api.axiosInstance.put<TProject>(
@@ -28,7 +28,6 @@ export default function PutProjectsQuery({
       console.log("PutProjectsQuery : error", e.message);
     },
   });
-  return {
-    projects,
-  };
 }
+
+export { usePutProjectQuery as usePutProjectsQuery };

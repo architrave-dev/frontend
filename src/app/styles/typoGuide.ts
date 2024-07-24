@@ -1,7 +1,13 @@
 import { css } from "styled-components";
 
 const mainTitle = css`
-  font-size: ${(props) => props.theme.fontSize.xlg};
+  /* font-size: ${(props) => props.theme.fontSize.xlg}; */
+  font-size: clamp(
+    ${(props) => {
+      const fs = props.theme.fontSize;
+      return `${fs.lg}, ${fs.lg} + 2vw, ${fs.xlg}`;
+    }}
+  );
   font-weight: ${(props) => props.theme.fontWeight.semiBold};
 `;
 

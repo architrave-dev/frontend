@@ -1,9 +1,9 @@
-import { TMember } from "@entities/artist/model/member";
+import { TMember } from "@entities/artist/model/member.type";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "src/app/config";
 
-function GetArtistLanding({ aui }: { aui: string }) {
-  const { data } = useQuery({
+function useArtistLanding({ aui }: { aui: string }) {
+  return useQuery({
     queryKey: ["artist-landing", { aui }],
     queryFn: async () => {
       const { data } = await api.axiosInstance.get<TMember>(
@@ -12,7 +12,6 @@ function GetArtistLanding({ aui }: { aui: string }) {
       return data;
     },
   });
-  return data;
 }
 
-export { GetArtistLanding };
+export { useArtistLanding };

@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "src/app/config";
-import { TProject } from "./projectType";
+import { TProject } from "../model/project.type";
 
-export default function useGetProjectsQuery({ aui }: { aui: string }) {
+function useGetProjectsQuery({ aui }: { aui: string }) {
   const { data, isError, isSuccess } = useQuery({
     queryKey: ["projects", { aui }],
     queryFn: async () => {
@@ -19,3 +19,5 @@ export default function useGetProjectsQuery({ aui }: { aui: string }) {
     project: isSuccess ? data.data : [],
   };
 }
+
+export { useGetProjectsQuery };

@@ -1,0 +1,1 @@
+export { artistQuery } from "./artistQuery";
