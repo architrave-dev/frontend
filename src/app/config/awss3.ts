@@ -3,7 +3,6 @@ import {
   GetObjectCommand,
   S3Client,
 } from "@aws-sdk/client-s3";
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 const s3 = new S3Client({
   region: import.meta.env.VITE_AWS_REGION,
@@ -38,11 +37,6 @@ const getFile = async () => {
 
   try {
     const response = await s3.send(new GetObjectCommand(params));
-    const presign = await getSignedUrl(s3, new GetObjectCommand(params), {
-      expiresIn: 600,
-    });
-    console.log("presign", presign);
-
     if (response.Body) {
       const blob = await new Response(response.Body).blob();
       return URL.createObjectURL(blob);
