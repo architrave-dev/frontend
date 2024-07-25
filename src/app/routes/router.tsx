@@ -1,6 +1,7 @@
 import Landing from "@pages/Landing";
 import Projects from "@pages/Project";
 import ProjectCreate from "@pages/ProjectCreate";
+import ProjectDetail from "@pages/ProjectDetail";
 import GlobalNavigation from "@widgets/GlobalNavigation";
 import { createBrowserRouter } from "react-router-dom";
 import ArtistLanding from "src/pages/ArtistLanding";
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
           },
           {
             path: ":projectId",
-            element: <div>projectId page</div>,
+            element: <ProjectDetail />,
           },
         ],
       },
