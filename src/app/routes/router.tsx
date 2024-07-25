@@ -4,12 +4,6 @@ import ProjectCreate from "@pages/ProjectCreate";
 import { createBrowserRouter } from "react-router-dom";
 import ArtistLanding from "src/pages/ArtistLanding";
 import GlobalNavigation from "src/widgets/GlobalNavigation";
-//
-// const tempRoot = {
-//   path: "/",
-//   element: "LandingPage",
-//   page: "temp",
-// };
 
 const router = createBrowserRouter([
   {

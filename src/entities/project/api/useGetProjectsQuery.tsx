@@ -3,7 +3,7 @@ import { api } from "src/app/config";
 import { TProject } from "../model/project.type";
 
 function useGetProjectsQuery({ aui }: { aui: string }) {
-  const { data, isError, isSuccess } = useQuery({
+  return useQuery({
     queryKey: ["projects", { aui }],
     queryFn: async () => {
       const result = await api.axiosInstance.get<TProject[]>(
@@ -12,12 +12,6 @@ function useGetProjectsQuery({ aui }: { aui: string }) {
       return result;
     },
   });
-  if (isError) {
-    throw new Error("fetch failed");
-  }
-  return {
-    project: isSuccess ? data.data : [],
-  };
 }
 
 export { useGetProjectsQuery };

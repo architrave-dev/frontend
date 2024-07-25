@@ -1,1 +1,1 @@
-export { UpdateArtistLanding } from "./updateArtistLanding";
+export { updateArtistLanding } from "./updateArtistLanding";

@@ -36,18 +36,15 @@ const StyledStackSection = styled.section`
   height: 100vh;
   height: 100dvh;
   height: 100svh;
-  & > * {
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
-  }
 `;
 
 const StyledImageHeader = styled.header`
   margin-inline-start: 12rem;
-  margin-block-start: 75vh;
-  /* color: ${(props) => props.theme.colors.white}; */
+  margin-block-end: 25vh;
+  margin-block-end: 25dvh;
+  margin-block-end: 25svh;
   justify-self: start;
-  align-self: start;
+  align-self: end;
 `;
 
 const StyledMainTitle = styled.h1`

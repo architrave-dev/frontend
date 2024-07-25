@@ -1,44 +1,76 @@
 import { TypoCSS } from "@styles/typoGuide";
 import { DividerCSS } from "src/shared/ui/Divider";
-import { ProjectEntity } from "../api";
+import {
+  Controller,
+  Control,
+  UseFieldArrayAppend,
+  UseFieldArrayRemove,
+  FieldValues,
+} from "react-hook-form";
 import styled from "styled-components";
+import React from "react";
 
-// TODO : need projectDescriptionProps update
-export default function ProjectDescription({
-  projectInfoList,
-  description,
-}: ProjectEntity.TProject) {
+function ProjectDescriptionTitle({ children }: { children: React.ReactNode }) {
+  return <StyledProjectTitle>{children}</StyledProjectTitle>;
+}
+
+type ProjectDescriptionFieldsProps<T extends FieldValues> = {
+  field: T;
+  control: Control<T>;
+  index: number;
+  append: UseFieldArrayAppend<T>;
+  remove: UseFieldArrayRemove;
+};
+
+function ProjectDescriptionFields({
+  field,
+  control,
+  index,
+  append,
+}: // eslint-disable-next-line @typescript-eslint/no-explicit-any
+ProjectDescriptionFieldsProps<any>) {
   return (
-    <section>
-      <StyledProjectTitle>{description}</StyledProjectTitle>
-      <StyledDivider />
-      {projectInfoList.length > 0 ? (
-        <ul>
-          {projectInfoList.map((info) => {
-            return (
-              <FlexList key={info.projectInfoId}>
-                <b>{info.customName}</b>
-                <p>{info.customValue}</p>
-              </FlexList>
-            );
-          })}
-        </ul>
-      ) : null}
-    </section>
+    <div key={field.id}>
+      <Controller
+        name={`items.${index}.name`}
+        control={control}
+        render={({ field }) => <input {...field} placeholder="Name" />}
+      />
+      <Controller
+        name={`items.${index}.value`}
+        control={control}
+        render={({ field }) => <input {...field} placeholder="Value" />}
+      />
+      <button type="button" onClick={() => append({ name: "", value: "" })} />
+    </div>
   );
 }
 
+export interface ProjectDescriptionProps {
+  title: React.ReactNode;
+  projectInfoList: React.ReactNode;
+}
+
+function ProjectDescription({
+  title,
+  projectInfoList,
+}: ProjectDescriptionProps) {
+  return (
+    <>
+      {title}
+      <StyledDivider />
+      {projectInfoList}
+    </>
+  );
+}
+
+export const ProjectSection = Object.assign(ProjectDescription, {
+  ProjectTitle: ProjectDescriptionTitle,
+  ProjectInfoList: ProjectDescriptionFields,
+});
+
 const StyledProjectTitle = styled.h1`
   ${TypoCSS.mainTitle}
-`;
-
-const FlexList = styled.li`
-  display: grid;
-  grid-template-columns: 23rem 1fr;
-  font-size: ${(props) => props.theme.fontSize.sm};
-  font-weight: ${(props) => props.theme.fontWeight.medium};
-  column-gap: 1rem;
-  margin-block-end: 1rem;
 `;
 
 const StyledDivider = styled.div`
