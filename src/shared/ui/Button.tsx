@@ -1,5 +1,14 @@
 import { css } from "styled-components";
 
+const UnStyledButtonLayout = css`
+  all: unset;
+  cursor: pointer;
+  font-size: ${(props) => props.theme.fontSize.md};
+  /* color: ${(props) => props.theme.colors.white}; */
+  padding-inline: 1.25rem;
+  padding-block: 1.5rem;
+`;
+
 const StyledBaseButtonLayout = css`
   font-size: ${(props) => props.theme.fontSize.md};
   color: ${(props) => props.theme.colors.white};
@@ -27,5 +36,6 @@ const StyledOutlineButtonLayout = css`
 export {
   StyledBaseButtonLayout,
   StyledWhiteButtonLayout,
+  UnStyledButtonLayout,
   StyledOutlineButtonLayout,
 };

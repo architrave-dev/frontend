@@ -6,7 +6,7 @@ interface EditState {
 }
 
 const useEditStore = create<EditState>((set) => ({
-  isEditMode: true,
+  isEditMode: false,
   toggleEditMode: () => set((state) => ({ isEditMode: !state.isEditMode })),
 }));
 

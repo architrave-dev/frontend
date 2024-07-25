@@ -1,1 +1,1 @@
-export { ArtistLanding } from "./artistLanding";
+export { ArtistLandingBox } from "./artistLandingBox";

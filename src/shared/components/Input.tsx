@@ -8,7 +8,6 @@ interface InputInterface {
 const StyledInput = styled.input<InputInterface>`
   all: unset;
   display: block;
-  background-color: limegreen;
   padding: 0.5rem;
   font-size: ${(props) =>
     props.$size === "main" ? props.theme.fontSize.lg : props.theme.fontSize.md};

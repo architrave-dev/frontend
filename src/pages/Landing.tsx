@@ -2,7 +2,6 @@ import { Container } from "@styles/Layouts";
 import { SrOnly } from "@styles/srOnly";
 import { media } from "@styles/mediaQuery";
 import { TypoCSS } from "@styles/typoGuide";
-import LoginDialog from "@widgets/login-dialog/ui/loginDialog";
 import { useForm } from "react-hook-form";
 import { redirect } from "react-router-dom";
 import { api } from "src/app/config";
@@ -21,9 +20,6 @@ export default function Landing() {
   } = useForm<Form>();
   return (
     <>
-      <StyledHeader>
-        <LoginDialog />
-      </StyledHeader>
       <StyledTitle>Architrave</StyledTitle>
       <search>
         <StyledContainer>
@@ -65,15 +61,6 @@ export default function Landing() {
     </>
   );
 }
-const StyledHeader = styled.header`
-  display: grid;
-  justify-content: end;
-  padding-inline: clamp(2rem, 5vw, 4rem);
-  height: 7rem;
-  ${media.laptop} {
-    padding-inline: 2rem;
-  }
-`;
 
 const StyledTitle = styled.h1`
   ${TypoCSS.mainTitle}

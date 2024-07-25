@@ -1,153 +1,132 @@
-import { media } from "@styles/mediaQuery";
-import { Link, Outlet } from "react-router-dom";
-import styled, { css } from "styled-components";
-import { useEditStore } from "src/app/store";
-import useCurrentPath from "../shared/hooks/useCurrentPath";
+import { Outlet, useLocation } from "react-router-dom";
+import { styled } from "styled-components";
+import LoginDialog from "./login-dialog/ui/loginDialog";
+import { TypoCSS } from "@styles/typoGuide";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import { useEditStore } from "src/app/store";
+import { ButtonLayout } from "@shared/ui";
 
-interface GlobalNavigationProps extends React.HTMLAttributes<HTMLDivElement> {
-  artistName?: string;
-}
-
-export default function GlobalNavigation({
-  artistName,
-}: GlobalNavigationProps) {
+export default function GlobalNavigation() {
   const { isEditMode, toggleEditMode } = useEditStore((state) => state);
-  const pathMap = useCurrentPath({
-    "/projects": false,
-    "/works": false,
-    "/about": false,
-    "/contact": false,
-  });
+  const { pathname } = useLocation();
   return (
     <>
-      <StyledHeader>
-        <NavigationMenu.Root>
-          <StyledMenu>
-            <StyledList>
-              <StyledLogo $isCurrentPath={false} $disabled={false} to="/">
-                Architrave
-              </StyledLogo>
-            </StyledList>
-            <StyledFlex>
-              <StyledList>
-                <StyledLink
-                  $isCurrentPath={pathMap["/projects"]}
-                  $disabled={isEditMode}
-                  to="projects"
-                >
-                  Projects
-                </StyledLink>
-              </StyledList>
-              <StyledList>
-                <StyledLink
-                  $isCurrentPath={pathMap["/works"]}
-                  $disabled={isEditMode}
-                  to="works"
-                >
-                  Works
-                </StyledLink>
-              </StyledList>
-              <StyledList>
-                <StyledLink
-                  $isCurrentPath={pathMap["/about"]}
-                  $disabled={isEditMode}
-                  to="about"
-                >
-                  About
-                </StyledLink>
-              </StyledList>
-              <StyledList>
-                <StyledLink
-                  $isCurrentPath={pathMap["/contact"]}
-                  $disabled={isEditMode}
-                  to="contact"
-                >
-                  Contact
-                </StyledLink>
-              </StyledList>
-            </StyledFlex>
-            <StyledList>
-              {isEditMode && <button onClick={toggleEditMode}>완료</button>}
-              <StyledLink
-                $isCurrentPath={isEditMode}
-                $disabled={false}
-                to="login"
-              >
-                {artistName ?? "john"}
-              </StyledLink>
-            </StyledList>
-          </StyledMenu>
-        </NavigationMenu.Root>
-      </StyledHeader>
+      {pathname === "/" ? (
+        <StyledLandingHeader>
+          <LoginDialog />
+        </StyledLandingHeader>
+      ) : (
+        <StyledGlobalHeader>
+          <StyledNavigationMenu>
+            <StyledLink href="/">architrave</StyledLink>
+            <StyledNavigationList>
+              <StyledNavigationExpendMenu>
+                <StyledTrigger>Projects</StyledTrigger>
+                <StyledNavigationContent>
+                  <ul>
+                    <li>
+                      <StyledLink href="/projects/new">new</StyledLink>
+                    </li>
+                    <li>
+                      <StyledLink href="/projects">projects</StyledLink>
+                    </li>
+                  </ul>
+                </StyledNavigationContent>
+              </StyledNavigationExpendMenu>
+              <NavigationMenu.Item>
+                <StyledLink href="/works">works</StyledLink>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <StyledLink href="/about">about</StyledLink>
+              </NavigationMenu.Item>
+              <NavigationMenu.Item>
+                <StyledLink href="/contact">contact</StyledLink>
+              </NavigationMenu.Item>
+            </StyledNavigationList>
+            <StyledNavigationList $end>
+              {isEditMode ? (
+                <StyledEditMenu>
+                  <UnStyledButton onClick={toggleEditMode}>완료</UnStyledButton>
+                  <div>John</div>
+                </StyledEditMenu>
+              ) : (
+                <StyledEditMenu>
+                  <LoginDialog />
+                  <div>John</div>
+                </StyledEditMenu>
+              )}
+            </StyledNavigationList>
+          </StyledNavigationMenu>
+        </StyledGlobalHeader>
+      )}
       <main>
         <Outlet />
       </main>
     </>
   );
 }
-const StyledHeader = styled.header`
+
+const StyledLandingHeader = styled.header`
+  display: grid;
+  justify-content: end;
+  align-items: center;
+  height: 7rem;
+  padding-inline: clamp(2rem, 4vw, 12rem);
+`;
+
+const StyledGlobalHeader = styled.header`
   position: fixed;
   z-index: 500;
   width: 100%;
   height: 7rem;
-  padding-inline: 12rem;
-  /* background: transparent; */
-`;
-
-const StyledFlex = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  column-gap: 1.5rem;
-`;
-
-const StyledMenu = styled.menu`
-  display: grid;
-  grid-template-columns: 20rem auto 1fr;
-  align-items: center;
-`;
-
-const StyledList = styled.li`
-  font-size: ${(props) => props.theme.fontSize.md};
-  font-weight: ${(props) => props.theme.fontWeight.medium};
+  padding-inline: clamp(2rem, 4vw, 12rem);
+  ${TypoCSS.gnbTap}
   color: ${(props) => props.theme.colors.white};
-  &:last-child {
-    justify-self: end;
-  }
-  ${media.tablet} {
-    font-size: ${(props) => props.theme.fontSize.xsm};
-  }
 `;
 
-const StyledLink = styled(Link)<{
-  $isCurrentPath: boolean;
-  $disabled: boolean;
-}>`
-  display: block;
-  ${(props) =>
-    props.$disabled
-      ? css`
-          color: ${(props) => props.theme.colors.placeholder};
-          pointer-events: none;
-        `
-      : null}
-  &:hover,
-  &:focus,
-  &:active {
-    text-decoration: underline;
-  }
-  text-decoration: ${(props) => (props.$isCurrentPath ? "underline" : "none")};
+const StyledNavigationMenu = styled(NavigationMenu.Root)`
+  display: grid;
+  align-items: center;
+  height: 100%;
+  column-gap: 4rem;
+  grid-template-columns: 10rem 1fr 15rem;
 `;
 
-const StyledLogo = styled(StyledLink)`
-  font-size: ${(props) => props.theme.fontSize.lg};
-  ${media.tablet} {
-    font-size: ${(props) => props.theme.fontSize.md};
-  }
-  text-decoration: none;
-  &:hover,
-  &:focus,
-  &:active {
-    text-decoration: none;
-  }
+const StyledNavigationList = styled(NavigationMenu.List)<{ $end?: boolean }>`
+  display: flex;
+  column-gap: 3.2rem;
+  ${(props) => props.$end && `justify-content: end`};
+`;
+
+const StyledNavigationExpendMenu = styled(NavigationMenu.Item)`
+  position: relative;
+`;
+
+const StyledNavigationContent = styled(NavigationMenu.Content)`
+  position: absolute;
+  padding: 1rem;
+  top: 3.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: ${(props) => props.theme.colors.caption};
+  color: ${(props) => props.theme.colors.white};
+`;
+
+const StyledTrigger = styled(NavigationMenu.Trigger)`
+  all: unset;
+  cursor: pointer;
+`;
+
+const StyledEditMenu = styled.div`
+  display: flex;
+  justify-self: end;
+  column-gap: 3.2rem;
+`;
+
+const StyledLink = styled(NavigationMenu.Link)`
+  text-transform: capitalize;
+`;
+
+const UnStyledButton = styled.button`
+  ${ButtonLayout.UnStyledButtonLayout}
 `;
