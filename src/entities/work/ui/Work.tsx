@@ -21,13 +21,10 @@ function TextWork() {
   return <div></div>;
 }
 
-export const Work = Object.assign(
-  {},
-  {
-    Image: ImageWork,
-    Text: TextWork,
-  }
-);
+export const Work = Object.assign({
+  Image: ImageWork,
+  Text: TextWork,
+});
 
 const StyledSection = styled.section`
   ${MarginBottom}
@@ -39,7 +36,8 @@ const StyledImage = styled.img`
   object-fit: contain;
 `;
 
-const StyledText = styled.p`
+const StyledText = styled.textarea`
+  border: 2px dotted cyan;
   font-size: ${(props) => props.theme.fontSize.sm};
   font-weight: ${(props) => props.theme.fontWeight.medium};
 `;
