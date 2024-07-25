@@ -34,7 +34,7 @@ function Carousel() {
         );
       })} */}
       <SwiperSlide>
-        <Link to="projects">
+        <Link to="/projects">
           <StackSection>
             <BackgroundImage />
             <StackSection.Bottom>
@@ -54,7 +54,7 @@ function Carousel() {
         </Link>
       </SwiperSlide>
       <SwiperSlide>
-        <Link to="projects">
+        <Link to="/projects">
           <StackSection>
             <BackgroundImage />
             <StackSection.Bottom>
@@ -74,7 +74,7 @@ function Carousel() {
         </Link>
       </SwiperSlide>
       <SwiperSlide>
-        <Link to="projects">
+        <Link to="/projects">
           <StackSection>
             <BackgroundImage />
             <StackSection.Bottom>

@@ -11,7 +11,7 @@ export default function ImageChangeButton({
   ...props
 }: ImageChangeButtonProps) {
   return (
-    <StyledImageChangeButton>
+    <>
       <StyledGhostButton htmlFor="imageChangeInput">
         이미지 교체
       </StyledGhostButton>
@@ -22,17 +22,15 @@ export default function ImageChangeButton({
         onChange={onChange}
         {...props}
       />
-    </StyledImageChangeButton>
+    </>
   );
 }
 
-const StyledImageChangeButton = styled.div`
-  place-self: center;
-`;
-
 const StyledGhostButton = styled.label`
+  display: inline-block;
+  margin-inline: auto;
+  text-align: center;
   ${StyledOutlineButtonLayout}
-  background-color: limegreen;
 `;
 
 const StyledImageInput = styled.input`

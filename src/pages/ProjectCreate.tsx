@@ -1,5 +1,5 @@
-import ProjectCreateWidget from "@widgets/create-project/ui/projectCreate";
+import { ProjectCreateController } from "@widgets/create-project/ui";
 
 export default function ProjectCreate() {
-  return <ProjectCreateWidget></ProjectCreateWidget>;
+  return <ProjectCreateController />;
 }
